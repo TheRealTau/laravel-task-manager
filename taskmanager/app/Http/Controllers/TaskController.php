@@ -93,8 +93,10 @@ class TaskController extends Controller
         $strDateTime = request('end_date') ." ". request('end_time');
         $task->end_at = date_create_from_format('Y-m-d H:i A', $strDateTime);
         // validate checkbox
-        if (request('complete')){
+        if (request('complete') === 'on'){
             $task->complete = true;
+        } else {
+            $task->complete = false;
         }
         $task->update();
 
