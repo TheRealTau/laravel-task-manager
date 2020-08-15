@@ -16,10 +16,10 @@
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-  <!--Import Google Icon Font-->
+  {{-- MATERIALIZE --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
   <!-- Styles -->
   <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
@@ -110,22 +110,9 @@
   </div>
 
     {{-- MATERIALIZE --}}
-    {{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    {{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --}}
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ asset('js/init.js') }}"></script>
 
-    {{-- <script src="{{ asset('js/init.js') }}"></script> --}}
-
-    <script>
-      $('select').formSelect();
-      $('.datepicker').datepicker({
-        autoClose : true,
-        format : 'yyyy-mm-dd'});
-      $('.timepicker').timepicker();
-      $('.collapsible').collapsible();
-      $('.sidenav').sidenav();
-    </script>
 </body>
 </html>
