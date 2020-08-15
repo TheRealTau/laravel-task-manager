@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="dashboard">
+  <div class="app-title">
+    <h1>Task Manager App</h1>
+  </div>
   <div class="dashboard-box total-users">
     <h1>{{ $users }}</h1>
     <h4>Total users</h4>
