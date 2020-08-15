@@ -28,6 +28,10 @@ html, body {
   margin: 10px auto auto auto;
 }
 
+.title-app {
+  text-align: center;
+}
+
 .dashboard {
   display: flex;
   flex-wrap: wrap;

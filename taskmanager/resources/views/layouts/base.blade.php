@@ -16,12 +16,13 @@
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+  <!-- Styles -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
   {{-- MATERIALIZE --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- Styles -->
-  <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
 
 </head>
 <body>
@@ -45,16 +46,16 @@
           <!-- Authentication Links -->
           @guest
             <li>
-              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+              <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
             @if (Route::has('register'))
               <li>
-                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
               </li>
             @endif
           @else
             <li>
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              <a id="navbarDropdown" class="" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }} <span class="caret"></span>
               </a>
 
