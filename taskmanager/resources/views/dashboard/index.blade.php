@@ -10,11 +10,11 @@
     <h4>Total users</h4>
   </div>
   <div class="dashboard-box ongoing-tasks">
-    <h1>{{ $taskCount }}</h1>
+    <h1>{{ $taskOngoing }}</h1>
     <h4>On going tasks</h4>
   </div>
   <div class="dashboard-box completed-tasks">
-    <h1>{{ $taskCount }}</h1>
+    <h1>{{ $taskComplete }}</h1>
     <h4>Completed tasks</h4>
   </div>
   <div class="dashboard-box total-tasks">
