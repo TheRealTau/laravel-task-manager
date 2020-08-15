@@ -26,7 +26,7 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        $data = request()->validate([
+        request()->validate([
             'name'=>'required',
             'user_id'=>'required',
             'start_date'=>'required',
@@ -38,10 +38,9 @@ class TaskController extends Controller
         $task = new Task();
         $task->name = request('name');
         $task->user_id = request('user_id');
-        
+        //Concat date and time from materialize pickers and creating date from string
         $strDateTime = request('start_date') ." ". request('start_time');
         $task->start_at = date_create_from_format('Y-m-d H:i A', $strDateTime);
-
         $strDateTime = request('end_date') ." ". request('end_time');
         $task->end_at = date_create_from_format('Y-m-d H:i A', $strDateTime);
         $task->save();
@@ -49,21 +48,16 @@ class TaskController extends Controller
         return redirect(route('task.index'))->with('mssg', 'Task added to agenda');
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $task = Task::findOrFail($id);
         $users = User::orderBy('name', 'asc')->get();
+
         $start_at = date_create_from_format('Y-m-d H:i:s', $task->start_at);
         $end_at = date_create_from_format('Y-m-d H:i:s', $task->end_at);
-
+        //Slice timestamp into date and time for date and time materialize pickers
         $start_date = date_format($start_at, 'Y-m-d');
         $start_time = date_format($start_at, 'h:i A');
-        
         $end_date = date_format($end_at, 'Y-m-d');
         $end_time = date_format($end_at, 'h:i A');
 
@@ -92,12 +86,16 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->name = request('name');
         $task->user_id = request('user_id');
-
+        //Concat date and time from materialize pickers and creating date from string
         $strDateTime = request('start_date') ." ". request('start_time');
-        $task->start_at = date_create_from_format('Y-m-d H:i:s', $strDateTime);
-
+        // return $strDateTime;
+        $task->start_at = date_create_from_format('Y-m-d H:i A', $strDateTime);
         $strDateTime = request('end_date') ." ". request('end_time');
-        $task->end_at = date_create_from_format('Y-m-d H:i:s', $strDateTime);
+        $task->end_at = date_create_from_format('Y-m-d H:i A', $strDateTime);
+        // validate checkbox
+        if (request('complete')){
+            $task->complete = true;
+        }
         $task->update();
 
         return redirect(route('task.index'))->with('mssg', 'Task info updated');
