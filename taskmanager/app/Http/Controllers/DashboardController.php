@@ -8,6 +8,11 @@ use App\Task;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $users = User::orderBy('name', 'asc')->get()->count();
