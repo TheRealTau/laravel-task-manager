@@ -16,6 +16,10 @@
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
   <!-- Styles -->
   <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
@@ -24,7 +28,7 @@
   <div id="main-container">
     <nav>
       <div class="nav-wrapper grey darken-3">
-        
+        <a href="#" data-target="mobile-navbar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           {{-- <li><a href="#" class="brand-logo">Home</a></li> --}}
           <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
@@ -66,6 +70,40 @@
       </div>
     </nav>
 
+    <ul class="sidenav" id="mobile-navbar">
+      <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
+      <li><a href="{{ route('task.index') }}">Tasks</a></li>
+      <li><a href="{{ route('user.index') }}">Users</a></li>
+      @guest
+        <li>
+          <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+        </li>
+        @if (Route::has('register'))
+          <li>
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+          </li>
+        @endif
+      @else
+        <li>
+          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            {{ Auth::user()->name }} <span class="caret"></span>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+          </div>
+        </li> 
+      @endguest
+    </ul>
+
     <div>
       @yield('content')
     </div>
@@ -74,6 +112,7 @@
     {{-- MATERIALIZE --}}
     {{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --}}
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -86,6 +125,7 @@
         format : 'yyyy-mm-dd'});
       $('.timepicker').timepicker();
       $('.collapsible').collapsible();
+      $('.sidenav').sidenav();
     </script>
 </body>
 </html>
