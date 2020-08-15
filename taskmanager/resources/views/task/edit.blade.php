@@ -10,17 +10,26 @@
       <label for="name">Task name</label>
       <input type="text" id="name" name="name" value="{{ $task->name }}"><br>
       {{ $errors->first('name') }}<br>
-
-      <label for="user-select">User asigned:</label>
-      <select name="user_id" id="user-select">
-        <option value="{{ $task->user->id }}">{{ $task->user->name }}</option>
-        @foreach ( $users as $user )
-          @if ( $task->user->id !== $user->id )
-            <option value="{{ $user->id }}">{{ $user->name }}</option>
-          @endif
-        @endforeach
-      </select><br>
-      {{ $errors->first('user_id') }}<br>
+      <div class="row">
+        <div class="col s6">
+          <label for="user_id">User asigned:</label>
+          <select name="user_id" id="user_id">
+            <option value="{{ $task->user->id }}">{{ $task->user->name }}</option>
+            @foreach ( $users as $user )
+              @if ( $task->user->id !== $user->id )
+                <option value="{{ $user->id }}">{{ $user->name }}</option>
+              @endif
+            @endforeach
+          </select><br>
+          {{ $errors->first('user_id') }}<br>
+        </div>
+        <div class="input-field col s6">
+          <label>
+            <input type="checkbox" name="complete" class="filled-in" {{ $task->complete === 1 ? 'checked' : '' }}/>
+            <span>Task complete</span>
+          </label>
+        </div>
+      </div>
       <div class="row">
         <div class="input-field col s6">
           <div class="input-field row s6">
