@@ -31,9 +31,14 @@
         <a href="#" data-target="mobile-navbar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           {{-- <li><a href="#" class="brand-logo">Home</a></li> --}}
-          <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
-          <li><a href="{{ route('task.index') }}">Tasks</a></li>
-          <li><a href="{{ route('user.index') }}">Users</a></li>
+          
+          @auth
+            <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
+            <li><a href="{{ route('task.index') }}">Tasks</a></li>
+            <li><a href="{{ route('user.index') }}">Users</a></li>
+          @else
+            <li><a href="{{ url('/') }}">Home</a></li>
+          @endauth
         </ul>
 
         <ul id="nav-mobile" class="right hide-on-med-and-down">
