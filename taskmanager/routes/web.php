@@ -21,4 +21,4 @@ Route::get('/user', 'UserController@index')->name('user.index');
 Auth::routes(['register' => true]);
 
 // Route::get('/dashboard', 'HomeController@index')->name('dashboard.index');
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HosmeController@index')->name('home');
