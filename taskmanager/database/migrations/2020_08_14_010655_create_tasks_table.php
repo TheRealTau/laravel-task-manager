@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTasksTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
@@ -19,15 +14,11 @@ class CreateTasksTable extends Migration
             $table->string('name');
             $table->timestamp('start_at')->useCurrent();
             $table->timestamp('end_at')->useCurrent();
-            $table->unsignedInteger('user_id')->nullable()->constrained()->references('id')->on('users');
+            $table->foreignId('user_id')->constrained();
+            $table->boolean('complete')->default(false);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('tasks');
