@@ -26,6 +26,7 @@ Route::delete('/task/{id}', 'TaskController@destroy')->name('task.destroy');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
+Route::get('/user', 'UserController@index')->name('user.index');
 
 Auth::routes(['register' => true]);
 
